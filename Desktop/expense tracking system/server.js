@@ -2,22 +2,23 @@ const express= require("express");
 const app= express();
 
 const authRoutes=require("./routes/authRoutes");
+const transactionRoutes = require("./routes/transactionRoutes");
 
 
 app.use(express.json());
 app.use("/api/auth",authRoutes);
+app.use("/api/transactions", transactionRoutes);
 
 app.listen(3000,()=>{
     console.log("server is running on port 3000");
 });
 
 
-
 const pool = require("./config/database");
 
 async function testConnection() {
     try {
-        const [rows] = await pool.query("SELECT 1 AS test");
+        const [rows] = await pool.query("SELECT 100 AS hhhhhhhhhtest");
         console.log(rows);
     } catch (error) {
         console.error(error);
