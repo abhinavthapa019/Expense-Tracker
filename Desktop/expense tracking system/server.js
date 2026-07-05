@@ -1,6 +1,8 @@
 const express= require("express");
 const app= express();
 
+
+const reportRoutes = require("./routes/reportRoutes");
 const authRoutes=require("./routes/authRoutes");
 const transactionRoutes = require("./routes/transactionalRoutes");
 const loanRoutes=require("./routes/loanRoutes")
@@ -9,7 +11,8 @@ const loanRoutes=require("./routes/loanRoutes")
 app.use(express.json());
 app.use("/api/auth",authRoutes);
 app.use("/api/transactions", transactionRoutes);
-app.use("api/loan",loanRoutes);
+app.use("/api/loans",loanRoutes);
+app.use("/api/reports", reportRoutes);
 
 app.listen(3000,()=>{
     console.log("server is running on port 3000");
