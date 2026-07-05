@@ -7,7 +7,7 @@ const {
     getTransactionById,
     updateTransaction,
     deleteTransaction
-} = require("../controllers/transactionController");
+} = require("../controllers/transactionalController");
 
 const authenticateToken  = require("../middleware/authMiddleware");
 
