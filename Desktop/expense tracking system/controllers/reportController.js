@@ -1,7 +1,5 @@
 const db = require("../config/database");
 
-const db = require("../config/database");
-
 // Dashboard
 async function getDashboard(req, res) {
 
@@ -55,13 +53,14 @@ const [
 ]);
         const totalIncome = incomeRows[0].totalIncome;
         const totalExpense = expenseRows[0].totalExpense;
-        const loanGiven = loanRows[0].loanGiven;
+        const loanGiven = loanGivenRows[0].loanGiven;
         const loanBorrowed = loanBorrowedRows[0].loanBorrowed;
 
         const currentBalance =
             totalIncome -
             totalExpense -
-            loanGiven+ loanBorrowed;;
+            loanGiven +
+            loanBorrowed;
 
         return res.status(200).json({
             totalIncome,
