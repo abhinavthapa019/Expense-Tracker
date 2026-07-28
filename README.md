@@ -1,8 +1,7 @@
-Use of free tier gemini api to rate users CV
+Express concepts for MVC architecture 
 
-implementation of layered architecture (routes->controller->service->repo)
+learning about REST Api and completing basic CRUD operations
 
-Has 2 roles admin, user
+Integration with SQL, and learning about the flow of express application
 
-Concepts of file management, by storing it in local storage folder
-
+authentication module with the use of jwt token, and bcrypt hashing
