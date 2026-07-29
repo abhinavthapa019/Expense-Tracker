@@ -189,8 +189,8 @@ function Loans() {
 											</span>
 										</td>
 										<td className="px-4 py-3 text-sm font-medium text-gray-900">{loan.person_name}</td>
-										<td className="px-4 py-3 text-right text-sm text-gray-800">${Number(loan.original_amount).toFixed(2)}</td>
-										<td className="px-4 py-3 text-right text-sm font-semibold text-gray-900">${Number(loan.remaining_amount).toFixed(2)}</td>
+										<td className="px-4 py-3 text-right text-sm text-gray-800">Rs {Number(loan.original_amount).toFixed(2)}</td>
+										<td className="px-4 py-3 text-right text-sm font-semibold text-gray-900">Rs {Number(loan.remaining_amount).toFixed(2)}</td>
 										<td className="px-4 py-3 text-sm">
 											<span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${loan.status === "completed" ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-blue-700"}`}>
 												{loan.status}

@@ -51,23 +51,23 @@ const Dashboard = () => {
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
         <div className="rounded-xl bg-white p-5 shadow-sm">
           <p className="text-sm text-gray-500">Total Income</p>
-          <p className="mt-1 text-2xl font-semibold text-emerald-600">${totalIncome.toFixed(2)}</p>
+          <p className="mt-1 text-2xl font-semibold text-emerald-600">Rs {totalIncome.toFixed(2)}</p>
         </div>
         <div className="rounded-xl bg-white p-5 shadow-sm">
           <p className="text-sm text-gray-500">Total Expense</p>
-          <p className="mt-1 text-2xl font-semibold text-rose-600">${totalExpense.toFixed(2)}</p>
+          <p className="mt-1 text-2xl font-semibold text-rose-600">Rs {totalExpense.toFixed(2)}</p>
         </div>
         <div className="rounded-xl bg-white p-5 shadow-sm">
           <p className="text-sm text-gray-500">Loan Given</p>
-          <p className="mt-1 text-2xl font-semibold text-indigo-600">${loanGiven.toFixed(2)}</p>
+          <p className="mt-1 text-2xl font-semibold text-indigo-600">Rs {loanGiven.toFixed(2)}</p>
         </div>
         <div className="rounded-xl bg-white p-5 shadow-sm">
           <p className="text-sm text-gray-500">Loan Borrowed</p>
-          <p className="mt-1 text-2xl font-semibold text-amber-600">${loanBorrowed.toFixed(2)}</p>
+          <p className="mt-1 text-2xl font-semibold text-amber-600">Rs {loanBorrowed.toFixed(2)}</p>
         </div>
         <div className="rounded-xl bg-blue-600 p-5 text-white shadow-sm">
           <p className="text-sm text-blue-100">Current Balance</p>
-          <p className="mt-1 text-2xl font-bold">${currentBalance.toFixed(2)}</p>
+          <p className="mt-1 text-2xl font-bold">Rs {currentBalance.toFixed(2)}</p>
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import Dashboard from "./pages/dashboard/Dashboard";
-import Transactions from "./pages/transactions/Transactions";
-import Loans from "./pages/loans/Loans";
-import Reports from "./pages/reports/Reports";
+import Login from "./pages/other_pages/Login";
+import Register from "./pages/other_pages/Register";
+import Dashboard from "./pages/other_pages/Dashboard";
+import Transactions from "./pages/other_pages/Transactions";
+import Loans from "./pages/other_pages/Loans";
+import Reports from "./pages/other_pages/Reports";
 import MainLayout from "./layouts/MainLayout";
 import ProtectedRoute from "./routes/ProtectedRoute";
 

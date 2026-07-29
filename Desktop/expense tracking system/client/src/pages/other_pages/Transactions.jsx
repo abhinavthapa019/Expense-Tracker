@@ -1,6 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
 import * as transactionService from "../../services/transactionService";
 
+const categoryOptions = [
+	"Food",
+	"Coffee",
+	"Beer",
+	"Dates",
+	"Petrol",
+	"Bike Servicing",
+	"Shopping",
+	"Academic",
+];
+
 const initialForm = {
 	type: "expense",
 	category: "",
@@ -56,15 +67,22 @@ function Transactions() {
 		setEditingId(null);
 	}
 
-	function handleChange(event) {
-		const { name, value } = event.target;
+function handleChange(event) {
+	const { name, value } = event.target;
 
-		setFormData((prev) => ({
+	setFormData((prev) => {
+		const updated = {
 			...prev,
 			[name]: value,
-			category: name === "type" && value === "income" ? "" : prev.category,
-		}));
-	}
+		};
+
+		if (name === "type" && value === "income") {
+			updated.category = "";
+		}
+
+		return updated;
+	});
+}
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -141,15 +159,15 @@ function Transactions() {
 			<div className="grid gap-4 sm:grid-cols-3">
 				<div className="rounded-lg bg-white p-4 shadow-sm">
 					<p className="text-sm text-gray-500">Total Income</p>
-					<p className="mt-1 text-2xl font-semibold text-emerald-600">${totals.income.toFixed(2)}</p>
+					<p className="mt-1 text-2xl font-semibold text-emerald-600">Rs {totals.income.toFixed(2)}</p>
 				</div>
 				<div className="rounded-lg bg-white p-4 shadow-sm">
 					<p className="text-sm text-gray-500">Total Expense</p>
-					<p className="mt-1 text-2xl font-semibold text-rose-600">${totals.expense.toFixed(2)}</p>
+					<p className="mt-1 text-2xl font-semibold text-rose-600">Rs {totals.expense.toFixed(2)}</p>
 				</div>
 				<div className="rounded-lg bg-white p-4 shadow-sm">
 					<p className="text-sm text-gray-500">Net</p>
-					<p className="mt-1 text-2xl font-semibold text-blue-600">${(totals.income - totals.expense).toFixed(2)}</p>
+					<p className="mt-1 text-2xl font-semibold text-blue-600">Rs {(totals.income - totals.expense).toFixed(2)}</p>
 				</div>
 			</div>
 
@@ -169,14 +187,19 @@ function Transactions() {
 
 				<div>
 					<label className="mb-2 block text-sm font-medium text-gray-700">Category {formData.type === "expense" ? "*" : "(optional)"}</label>
-					<input
+					<select
 						name="category"
 						value={formData.category}
 						onChange={handleChange}
-						disabled={formData.type === "income"}
-						className="w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
-						placeholder="Food, Transport, Utilities"
-					/>
+						className="w-full rounded-lg border px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+					>
+						<option value="">Select a category</option>
+						{categoryOptions.map((category) => (
+							<option key={category} value={category}>
+								{category}
+							</option>
+						))}
+					</select>
 				</div>
 
 				<div>
@@ -257,7 +280,7 @@ function Transactions() {
 											</span>
 										</td>
 										<td className="px-4 py-3 text-sm text-gray-700">{item.category || "-"}</td>
-										<td className="px-4 py-3 text-right text-sm font-semibold text-gray-900">${Number(item.amount).toFixed(2)}</td>
+										<td className="px-4 py-3 text-right text-sm font-semibold text-gray-900">Rs {Number(item.amount).toFixed(2)}</td>
 										<td className="px-4 py-3 text-right text-sm">
 											<button onClick={() => handleEdit(item)} className="mr-2 rounded-md border px-3 py-1.5 font-medium text-gray-700 hover:bg-gray-50">
 												Edit

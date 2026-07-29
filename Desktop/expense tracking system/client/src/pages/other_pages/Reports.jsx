@@ -66,7 +66,7 @@ function Reports() {
 								categoryRows.map((row, idx) => (
 									<tr key={`${row.category || "uncategorized"}-${idx}`} className="border-t">
 										<td className="px-4 py-3 text-sm font-medium text-gray-900">{row.category || "Uncategorized"}</td>
-										<td className="px-4 py-3 text-right text-sm font-semibold text-gray-900">${Number(row.total).toFixed(2)}</td>
+										<td className="px-4 py-3 text-right text-sm font-semibold text-gray-900">Rs {Number(row.total).toFixed(2)}</td>
 									</tr>
 								))
 							)}
@@ -111,9 +111,9 @@ function Reports() {
 											<td className="px-4 py-3 text-sm font-medium text-gray-900">
 												{String(row.year)}-{String(row.month).padStart(2, "0")}
 											</td>
-											<td className="px-4 py-3 text-right text-sm font-semibold text-emerald-600">${income.toFixed(2)}</td>
-											<td className="px-4 py-3 text-right text-sm font-semibold text-rose-600">${expense.toFixed(2)}</td>
-											<td className={`px-4 py-3 text-right text-sm font-semibold ${net >= 0 ? "text-blue-700" : "text-rose-700"}`}>${net.toFixed(2)}</td>
+											<td className="px-4 py-3 text-right text-sm font-semibold text-emerald-600">Rs {income.toFixed(2)}</td>
+											<td className="px-4 py-3 text-right text-sm font-semibold text-rose-600">Rs {expense.toFixed(2)}</td>
+											<td className={`px-4 py-3 text-right text-sm font-semibold ${net >= 0 ? "text-blue-700" : "text-rose-700"}`}>Rs {net.toFixed(2)}</td>
 										</tr>
 									);
 								})
