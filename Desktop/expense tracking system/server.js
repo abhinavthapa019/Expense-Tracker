@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+
+console.log(process.env);
+console.log("DB_USER:", process.env.DB_USER);
 const express= require("express");
 const app= express();
 
