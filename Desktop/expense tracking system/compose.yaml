@@ -1,4 +1,16 @@
 services:
+
+  frontend:
+    build:
+      context: ./client
+    container_name: expense-frontend-container
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - expense-network
+      
   backend:
     build: .
     container_name: expense-backend-container
