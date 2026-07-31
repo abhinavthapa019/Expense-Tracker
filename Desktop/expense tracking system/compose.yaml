@@ -49,3 +49,12 @@ networks:
 
 volumes:
   mysql_data:
+
+  frontend:
+  restart: unless-stopped
+
+backend:
+  restart: unless-stopped
+
+mysql:
+  restart: unless-stopped

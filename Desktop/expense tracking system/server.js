@@ -1,21 +1,11 @@
 require("dotenv").config();
 
 
-
+const cors = require("cors");
 const express= require("express");
 const app= express();
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-
-    if (req.method === "OPTIONS") {
-        return res.sendStatus(204);
-    }
-
-    next();
-});
+app.use(cors());
 
 
 const reportRoutes = require("./routes/reportRoutes");
@@ -29,6 +19,11 @@ app.use("/api/auth",authRoutes);
 app.use("/api/transactions", transactionRoutes);
 app.use("/api/loans",loanRoutes);
 app.use("/api/reports", reportRoutes);
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        status: "OK"
+    });
+});
 
 // app.listen(3000,()=>{
 //     console.log("server is running on port 3000");
