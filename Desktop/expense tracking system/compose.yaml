@@ -4,16 +4,18 @@ services:
     build:
       context: ./client
     container_name: expense-frontend-container
+    restart: unless-stopped
     ports:
       - "80:80"
     depends_on:
       - backend
     networks:
       - expense-network
-      
+
   backend:
     build: .
     container_name: expense-backend-container
+    restart: unless-stopped
     ports:
       - "3000:3000"
     env_file:
@@ -27,20 +29,20 @@ services:
   mysql:
     image: mysql:8.4
     container_name: mysql
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root123
       MYSQL_DATABASE: expense_tracking_system
     volumes:
-      - mysql_data:/var/lib/mysql
+    - mysql_data:/var/lib/mysql
+    - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     ports:
       - "3306:3306"
-
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 5s
       timeout: 5s
       retries: 10
-
     networks:
       - expense-network
 
@@ -49,12 +51,3 @@ networks:
 
 volumes:
   mysql_data:
-
-  frontend:
-  restart: unless-stopped
-
-backend:
-  restart: unless-stopped
-
-mysql:
-  restart: unless-stopped
